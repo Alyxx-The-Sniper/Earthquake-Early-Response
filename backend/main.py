@@ -19,6 +19,15 @@ class Building(BaseModel):
 # 2. Initialize the FastAPI application
 app = FastAPI()
 
+# serve everything in the repo root as static files
+app.mount("/static", StaticFiles(directory=Path(__file__).parent.parent, html=True), name="static")
+
+# deliver index.html on "/"
+@app.get("/", response_class=HTMLResponse)
+async def home():
+    return HTMLResponse(content=(Path(__file__).parent.parent / "index.html").read_text(), status_code=200)
+
+
 # Add CORS middleware to allow requests from your front-end
 # This is a security feature browsers enforce.
 origins = ["*"] # Allow all origins for simplicity, can be restricted later
@@ -80,6 +89,3 @@ def predict_damage(building: Building):
     # Return the prediction as a JSON response
     return {"predicted_damage": prediction_label}
 
-@app.get("/")
-def read_root():
-    return {"message": "Earthquake Damage Prediction API is running."}
