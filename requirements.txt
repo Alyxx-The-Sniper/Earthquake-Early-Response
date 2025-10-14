@@ -1,5 +1,11 @@
-fastapi>=0.111.0
-uvicorn[standard]>=0.29.0
-scikit-learn>=1.5.2          # first release with 3.13 wheels
-pandas>=2.2.3
-joblib>=1.4.2
+# Web Server
+fastapi
+uvicorn
+
+# Data Handling & Model Loading
+pandas
+joblib
+
+# Machine Learning Libraries
+scikit-learn
+imbalanced-learn
