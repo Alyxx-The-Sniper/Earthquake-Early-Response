@@ -25,7 +25,7 @@ const buildingData = [
 // ---------- 2. API ----------
 async function getPredictionFromAPI(building) {
   try {
-    const res = await fetch('http://127.0.0.1:8000/predict', {
+    const res = await fetch('/predict', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(building)
@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buildMap(preds);
     resultsDiv.classList.remove('hidden');
     noResultsDiv.classList.add('hidden');
+    map.invalidateSize();
     simulateBtn.disabled = false;
     simulateBtn.textContent = 'Simulate Earthquake';
   });
