@@ -1,0 +1,13 @@
+/* Set a height for the map container */
+#map {
+    height: 600px;
+}
+
+/* Custom font */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Import Google Font - this is better placed in the CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
